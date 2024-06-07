@@ -1,0 +1,3 @@
+mode: "dev" # dev | release
+port: ":9000" # ":<port>"
+http2: true # true | false

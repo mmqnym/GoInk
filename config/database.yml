@@ -1,0 +1,5 @@
+name: "psql"
+host: "psql"
+port: 5432
+user: "root"
+password: "password"

@@ -1,0 +1,14 @@
+cors:
+  enabled: true
+  allowOrigins: ["*"] # "*" for all origins
+  allowMethods: "GET, POST, OPTIONS"
+  allowHeaders: "User-Agent, Authorization, Content-Length, X-CSRF-Token, Origin, Content-Type, Accept, Cache-Control"
+  exposeHeaders: "Content-Length"
+  maxAge: "172800"
+  allowCredentials: "true"
+
+auth:
+  jwtSecret: "example"
+  jwtSigningMethod: "HS256" # <HS|RS|ES><256|384|512>
+  jwtExpires: 86400 # seconds
+  xAuthToken: "example"

@@ -1,0 +1,89 @@
+basePath: /api/v1
+definitions:
+  response.Error:
+    properties:
+      error:
+        type: string
+    type: object
+  response.GenerateJWT:
+    properties:
+      token:
+        type: string
+    type: object
+  response.Ping:
+    properties:
+      message:
+        type: string
+    type: object
+  response.TestJWT:
+    properties:
+      userID:
+        type: string
+    type: object
+host: localhost:9000
+info:
+  contact:
+    email: mail@mmq.dev
+    name: 0xmmq
+    url: https://github.com/mmqnym
+  description: GoInk is a template for quickly building a Go web server
+  license:
+    name: MIT
+    url: https://github.com/GoInk/blob/main/LICENSE
+  title: goink
+  version: "1.0"
+paths:
+  /sample/jwt/get:
+    get:
+      description: This API will generate JWT which users can use on some APIs that
+        require authentication
+      operationId: v1-sample-generate-jwt
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'Success" response=`{"token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJFeGFtcGxlSWQiLCJleHAiOjE3MTc3NDYyMTUsIm5iZiI6MTcxNzY1OTgxNSwiaWF0IjoxNzE3NjU5ODE1fQ.BOYdOVsiPbK5nfhsYzX4G_EciVlbZ3LM2pCUQFjRwZo"}`'
+          schema:
+            $ref: '#/definitions/response.GenerateJWT'
+        "500":
+          description: 'Failure" response=`{"error": "something went wrong"}`'
+          schema:
+            $ref: '#/definitions/response.Error'
+      summary: Generating JWTs for Authentication
+      tags:
+      - API
+  /sample/jwt/test:
+    post:
+      description: This API will check if the JWT is valid
+      operationId: v1-sample-test-jwt
+      parameters:
+      - description: Bearer
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'Success" response=`{"userID": "ExampleID"}`'
+          schema:
+            $ref: '#/definitions/response.TestJWT'
+      summary: Verifying JWTs
+      tags:
+      - API
+  /sample/ping:
+    get:
+      description: This API will return 200 if the server is running normally
+      operationId: v1-sample-ping
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'Success" response=`{"message": "pong"}`'
+          schema:
+            $ref: '#/definitions/response.Ping'
+      summary: Test the server is running normally
+      tags:
+      - API
+swagger: "2.0"

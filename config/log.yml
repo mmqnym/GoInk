@@ -1,0 +1,9 @@
+level: "info"
+output:
+  stdout: true
+  file: true
+fileName: "TEMP.log"
+maxSize: 10
+maxAge: 5
+localTime: true
+compress: true
